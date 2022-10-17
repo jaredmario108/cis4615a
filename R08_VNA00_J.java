@@ -5,9 +5,9 @@ public class R08_VNA00_J {
     //  Rule 08. Visibility and Atomicity (VNA)
     //  VNA00-J. Ensure visibility when accessing shared primitive variables
 
-    //  Given the non-compliant code below:
+    //  Correct the code as shown in the Compliant Solution below:
     final class ControlledStop implements Runnable {
-        private boolean done = false;
+        private volatile boolean done = false;
         
         @Override public void run() {
           while (!done) {
