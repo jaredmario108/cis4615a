@@ -5,27 +5,15 @@ public class R05_OBJ01_J {
     //  Rule 05. Object Orientation (OBJ)
     //  OBJ01-J. Limit accessibility of fields
     
-    //  Given the non-compliant code below:
+    //  Correct the code as shown in the Compliant Solution below:
     public class Widget {
-        public int total; // Number of elements
+        private int total; // Declared private
        
-        void add() {
-          if (total < Integer.MAX_VALUE) {     
-            total++;
-            // ...
-          } else {
-            throw new ArithmeticException("Overflow");
-          }
+        public int getTotal () {
+          return total;
         }
        
-        void remove() { 
-          if (total > 0) {     
-            total--;
-            // ...
-          } else {
-            throw new ArithmeticException("Overflow");
-          }
-        }
+        // Definitions for add() and remove() remain the same
       }
 
     //  Refer to: Rule 05. Object Orientation (OBJ)

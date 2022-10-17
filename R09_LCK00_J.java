@@ -5,18 +5,14 @@ public class R09_LCK00_J {
     //  Rule 09. Locking (LCK)
     //  LCK00-J. Use private final lock objects to synchronize classes that may interact with untrusted code
 
-    //  Given the non-compliant code below:
+    //  Correct the code as shown in the Compliant Solution below:
     public class SomeObject {
-        //changeValue locks on the class object's monitor
-        public static synchronized void changeValue() {
-          // ...
-        }
-      }
+        private static final Object lock = new Object();
        
-      // Untrusted code
-      synchronized (SomeObject.class) {
-        while (true) {
-          Thread.sleep(Integer.MAX_VALUE); // Indefinitely delay someObject
+        public static void changeValue() {
+          synchronized (lock) { // Locks on the private Object
+            // ...
+          }
         }
       }
 
